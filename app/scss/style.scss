@@ -1,0 +1,189 @@
+@import 'variables', 'globals', 'mixins';
+
+body {
+  background-color: $blueLightGrayish;
+}
+
+.container {
+  width: 85%;
+  max-width: 730px;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: 8px;
+  @include standardBoxShadow;
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+
+  @include breakpoint-up(medium) {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    overflow: visible;
+  }
+}
+
+.drawer {
+  height: 200px;
+  background: url(../../images/drawers.jpg) top center no-repeat;
+  background-size: cover;
+
+  @include breakpoint-up(medium) {
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+  }
+}
+
+.main {
+  padding: 41px 32px 0;
+
+  &__description {
+    .title {
+      font-size: 14px;
+    }
+
+    .text {
+      font-size: 10px;
+      margin: 23px 0;
+      line-height: 2;
+      color: $blueDesaturatedDark;
+    }
+  }
+
+  &__user {
+    height: 64px;
+
+    &__desc {
+      h2 {
+        font-size: 11px;
+        margin-bottom: 3px;
+      }
+
+      p {
+        font-size: 10px;
+        color: $blueGrayish;
+      }
+    }
+
+    &__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+  }
+
+  @include breakpoint-up(medium) {
+    padding: 38px 32px 32px;
+
+    & .title {
+      font-size: 18px;
+    }
+
+    & .text {
+      font-size: 12px;
+    }
+
+    &__user {
+      height: auto;
+    }
+  }
+}
+
+.social-link {
+  height: 64px;
+  width: 100%;
+  background-color: $blueVeryDarkGrayish;
+  border-radius: 0 0 8px 8px;
+  padding: 0 32px;
+  position: absolute;
+  bottom: -64px;
+  transition: 0.5s ease-in-out;
+
+  &.active {
+    bottom: 0;
+  }
+
+  & .links {
+
+    p {
+      text-transform: uppercase;
+      color: $blueDesaturatedDark;
+      letter-spacing: 5px;
+      margin-right: 15px;
+    }
+
+    & a {
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+
+
+      &:not(:last-of-type) {
+        margin-right: 15px;
+      }
+
+      & i {
+        transition: color .3s ease-in-out;
+
+        &.fa-facebook:hover {
+          color: #1877f2;
+        }
+
+        &.fa-twitter:hover {
+          color: #00aced;
+        }
+
+        &.fa-pinterest:hover {
+          color: #E60023;
+        }
+      }
+
+
+    }
+  }
+
+  @include breakpoint-up(medium) {
+    bottom: 100px;
+    width: fit-content;
+    border-radius: 8px;
+    right: 0;
+    transform: translateX(30%);
+    transition: 0s;
+    visibility: hidden;
+    @include standardBoxShadow;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      right: 50%;
+      transform: translateX(50%);
+      border-right: 15px solid transparent;
+      border-left: 15px solid transparent;
+      border-top: 15px solid $blueVeryDarkGrayish;
+    }
+
+    &.active {
+      bottom: 100px;
+      visibility: visible;
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 1rem;
+  text-align: center;
+  color: $blueDesaturatedDark;
+  font-size: 11px;
+
+  a {
+    color: $blueGrayish;
+    text-decoration: underline;
+    transition: color .3s ease-in-out;
+  }
+
+  & a:hover {
+    color: $blueVeryDarkGrayish;
+  }
+}
